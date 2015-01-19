@@ -10,19 +10,31 @@ Installing
 Usage
 ---------
 
-1) Export the rulesets on pfSense with `pfctl -vvvsr`. This can be done via SSH, or in the TODO part of the WebUI.
-2) Run `pfSense2Logstash rules.txt > rule_id_to_tag.dict`
-3) Include the file in the logstash PLUGIN rule
+1. Export the rulesets on pfSense with `pfctl -vvvsr`. This can be done via SSH, or in the "Diagnostics/Command Prompt" part of the WebUI.
+2. Run `pfSense2Logstash rules.txt > rule_id_to_tag.dict`
+3. Include the file in the logstash PLUGIN rule
 
 Example Result
 ----------------
 
 ```text
 ...
-"7": Default deny rule IPv6
-"8": Default deny rule IPv6
-"28": drop quick inet proto tcp from any port = 0 to any
-"29": drop quick inet proto tcp from any to any port = 0
+"0": "relayd/*" all (anchor)
+"1": "openvpn/*" all (anchor)
+"2": "ipsec/*" all (anchor)
+"3": Block all IPv6 (block)
+"4": Block all IPv6 (block)
+"5": Default deny rule IPv4 (block)
+"6": Default deny rule IPv4 (block)
+"7": Default deny rule IPv6 (block)
+"8": Default deny rule IPv6 (block)
+...
+"84": on vr2 proto tcp from any to any port 5899 >< 5931 flags S/SA label "USER_RULE: m_Other VNC outbound" queue (qOthersHigh, qACK) (match)
+...
+"110": USER_RULE: dmz: allow outbound smtp from mail (pass)
+"111": USER_RULE: dmz: allow outbound git (pass)
+"112": USER_RULE: dmz: allow outbound https (pass)
+"113": USER_RULE: dmz: allow outbound http (pass)
 ...
 ```
 
