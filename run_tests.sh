@@ -1,2 +1,3 @@
 #!/bin/sh
-PYTHONPATH=. python tests/test_parser.py
+ . ~/.python/parse-pfsense-python2.7/bin/activate
+nosetests

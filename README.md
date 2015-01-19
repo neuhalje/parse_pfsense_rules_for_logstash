@@ -35,7 +35,7 @@ Development
 
 Test
 -----
-`./run_tests.sh`
+`nosetests`
 
 Building the package
 ----------------------
