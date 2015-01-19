@@ -5,6 +5,7 @@ This script parses the firewall rules from [pfSense](https://www.pfsense.org/) a
 
 Installing
 ------------
+* From GitHub: `pip install https://github.com/neuhalje/parse_pfsense_rules_for_logstash/zipball/master`
 * local installation: `python setup.py  install`
 
 Usage
