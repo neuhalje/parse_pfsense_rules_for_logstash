@@ -11,7 +11,7 @@ config = {
     'download_url': 'TODO',
     'author_email': 'TODO',
     'version': '0.1',
-    'install_requires': ['unittest'],
+    'install_requires': [],
     'packages': ['pfsense_parser'],
     'name': 'pfsenseparser',
     'license': 'BSD',
