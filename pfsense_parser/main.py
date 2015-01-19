@@ -25,7 +25,7 @@ def main():
                     columns = (id, item['msg'])
 
                 if type == 'block':
-                    print("%s:%s" % columns)
+                    print('"%s": %s' % columns)
 
 if __name__ == '__main__':
     main()

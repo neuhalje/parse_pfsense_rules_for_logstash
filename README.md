@@ -1,7 +1,7 @@
 Parsing pfSense 2.1 rules for logstash
 ===========================================
 
-This script parses the firewall rules from [pfSense](https://www.pfsense.org/) and emits them in a format suitable for [logstash PLUGIN](TODO).
+This script parses the firewall rules from [pfSense](https://www.pfsense.org/) and emits them in a format suitable for [logstash translate plugin](http://logstash.net/docs/1.4.2/filters/translate).
 
 Installing
 ------------
@@ -18,7 +18,12 @@ Example Result
 ----------------
 
 ```text
-TODO
+...
+"7": Default deny rule IPv6
+"8": Default deny rule IPv6
+"28": drop quick inet proto tcp from any port = 0 to any
+"29": drop quick inet proto tcp from any to any port = 0
+...
 ```
 
 Example Logstash Config
