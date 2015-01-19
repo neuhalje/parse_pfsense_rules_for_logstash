@@ -13,8 +13,19 @@ config = {
     'version': '0.1',
     'install_requires': ['unittest'],
     'packages': ['pfsense_parser'],
-    'scripts': [],
-    'name': 'pfsenseparser'
+    'name': 'pfsenseparser',
+    'license': 'BSD',
+    'classifiers': [
+            "Development Status :: 3 - Alpha",
+            "Topic :: Utilities",
+            "License :: OSI Approved :: BSD License",
+                   ],
+    'entry_points':{
+             'console_scripts': [
+                   'pfSense2Logstash=pfsense_parser.main:main',
+                                ],
+             'gui_scripts': [ ]
+                   }
     }
 
 setup(**config)
