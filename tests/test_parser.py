@@ -23,7 +23,7 @@ class ParserTest(unittest.TestCase):
         sut = self.create_sut()
         self.assertEquals([], sut.parse(" [ Evaluations: 7788788   Packets: 6477312   Bytes: 1941991782  States: 0     ]"))
 
-    def test_scrub_line__parses_to__list_with_scrub_entry(self):
+    def test_parse_string__parses_to__list_with_parsed_entry(self):
         sut = self.create_sut()
         self.assertEquals([{"id":0, "type": "scrub", "msg":"on vr2 all fragment reassemble"}], sut.parse("@0 scrub on vr2 all fragment reassemble"))
 
@@ -35,6 +35,10 @@ class ParserTest(unittest.TestCase):
         sut = self.create_sut()
         sut.parse(["@0 scrub on vr2 all fragment reassemble"])
         self.assertEquals([{"id":0, "type": "scrub", "msg":"on vr2 all fragment reassemble"}], sut.parse(["@0 scrub on vr2 all fragment reassemble"]))
+
+    def test_line_with_tag__parses_to__list_with_parsed_entry_with_tag(self):
+        sut = self.create_sut()
+        self.assertEquals([{"id":8, "type": "block", "msg":"drop out log inet6 all", "label": "Default deny rule IPv6"}], sut.parse(['@8 block drop out log inet6 all label "Default deny rule IPv6"']))
 
 if __name__ == '__main__':
     unittest.main()
