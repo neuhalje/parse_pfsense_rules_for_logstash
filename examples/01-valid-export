@@ -1,0 +1,377 @@
+[2.1.5-RELEASE][root@fwall.local.neuhalfen.name]/root(9): pfctl -vvvsr
+@0 scrub on vr2 all fragment reassemble
+ [ Evaluations: 12882073  Packets: 5093291   Bytes: 1673472449  States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@1 scrub on vr0 all fragment reassemble
+ [ Evaluations: 7788788   Packets: 6477312   Bytes: 1941991782  States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@2 scrub on vr1 all fragment reassemble
+ [ Evaluations: 1311476   Packets: 1311468   Bytes: 465405595   States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@0 anchor "relayd/*" all
+ [ Evaluations: 120503    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@1 anchor "openvpn/*" all
+ [ Evaluations: 120503    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@2 anchor "ipsec/*" all
+ [ Evaluations: 120503    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@3 block drop in log quick inet6 all label "Block all IPv6"
+ [ Evaluations: 120503    Packets: 1170      Bytes: 84240       States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@4 block drop out log quick inet6 all label "Block all IPv6"
+ [ Evaluations: 27780     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@5 block drop in log inet all label "Default deny rule IPv4"
+ [ Evaluations: 119333    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@6 block drop out log inet all label "Default deny rule IPv4"
+ [ Evaluations: 119333    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@7 block drop in log inet6 all label "Default deny rule IPv6"
+ [ Evaluations: 119333    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@8 block drop out log inet6 all label "Default deny rule IPv6"
+ [ Evaluations: 27780     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@9 pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type echorep keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@10 pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routersol keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@11 pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routeradv keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@12 pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type echorep keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@13 pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routersol keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@14 pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routeradv keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@15 pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type echoreq keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@16 pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routersol keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@17 pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routeradv keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@18 pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type echoreq keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@19 pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routersol keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@20 pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routeradv keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@21 pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type echoreq keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@22 pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type routersol keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@23 pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type routeradv keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@24 pass quick inet6 proto ipv6-icmp all icmp6-type unreach keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@25 pass quick inet6 proto ipv6-icmp all icmp6-type toobig keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@26 pass quick inet6 proto ipv6-icmp all icmp6-type neighbrsol keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@27 pass quick inet6 proto ipv6-icmp all icmp6-type neighbradv keep state
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@28 block drop quick inet proto tcp from any port = 0 to any
+ [ Evaluations: 119333    Packets: 1         Bytes: 44          States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@29 block drop quick inet proto tcp from any to any port = 0
+ [ Evaluations: 104680    Packets: 3         Bytes: 132         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@30 block drop quick inet proto udp from any port = 0 to any
+ [ Evaluations: 119329    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@31 block drop quick inet proto udp from any to any port = 0
+ [ Evaluations: 13984     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@32 block drop quick inet6 proto tcp from any port = 0 to any
+ [ Evaluations: 119329    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@33 block drop quick inet6 proto tcp from any to any port = 0
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@34 block drop quick inet6 proto udp from any port = 0 to any
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@35 block drop quick inet6 proto udp from any to any port = 0
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@36 block drop quick from <snort2c:0> to any label "Block snort2c hosts"
+ [ Evaluations: 119333    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@37 block drop quick from any to <snort2c:0> label "Block snort2c hosts"
+ [ Evaluations: 119333    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@38 block drop in log quick proto tcp from <sshlockout:0> to (self:9) port = ssh label "sshlockout"
+ [ Evaluations: 119333    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@39 block drop in log quick proto tcp from <webConfiguratorlockout:0> to (self:9) port = https label "webConfiguratorlockout"
+ [ Evaluations: 80626     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@40 block drop in quick from <virusprot:0> to any label "virusprot overload table"
+ [ Evaluations: 91551     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@41 block drop in on ! vr2 inet from 172.20.3.0/24 to any
+ [ Evaluations: 91551     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@42 block drop in inet from 172.20.3.14 to any
+ [ Evaluations: 91551     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@43 block drop in on vr2 inet6 from fe80::20d:b9ff:fe1e:59ae to any
+ [ Evaluations: 91551     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@44 block drop in log quick on vr0 from <bogons:3317> to any label "block bogon IPv4 networks from GREEN"
+ [ Evaluations: 91551     Packets: 28        Bytes: 13947       States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@45 block drop in on ! vr0 inet from 172.20.0.0/24 to any
+ [ Evaluations: 91523     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@46 block drop in inet from 172.20.0.14 to any
+ [ Evaluations: 91523     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@47 block drop in on vr0 inet6 from fe80::20d:b9ff:fe1e:59ac to any
+ [ Evaluations: 91523     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@48 pass in quick on vr0 inet proto udp from any port = bootpc to 255.255.255.255 port = bootps keep state label "allow access to DHCP server"
+ [ Evaluations: 75821     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@49 pass in quick on vr0 inet proto udp from any port = bootpc to 172.20.0.14 port = bootps keep state label "allow access to DHCP server"
+ [ Evaluations: 48        Packets: 96        Bytes: 32348       States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@50 pass out quick on vr0 inet proto udp from 172.20.0.14 port = bootps to any port = bootpc keep state label "allow access to DHCP server"
+ [ Evaluations: 33248     Packets: 19        Bytes: 6403        States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@51 block drop in on ! vr1 inet from 172.20.1.0/24 to any
+ [ Evaluations: 119238    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@52 block drop in inet from 172.20.1.14 to any
+ [ Evaluations: 104948    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@53 block drop in on vr1 inet6 from fe80::20d:b9ff:fe1e:59ad to any
+ [ Evaluations: 91475     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@54 pass in on lo0 inet all flags S/SA keep state label "pass IPv4 loopback"
+ [ Evaluations: 91475     Packets: 4         Bytes: 348         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@55 pass out on lo0 inet all flags S/SA keep state label "pass IPv4 loopback"
+ [ Evaluations: 27765     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@56 pass in on lo0 inet6 all flags S/SA keep state label "pass IPv6 loopback"
+ [ Evaluations: 4         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@57 pass out on lo0 inet6 all flags S/SA keep state label "pass IPv6 loopback"
+ [ Evaluations: 2         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@58 pass out inet all flags S/SA keep state allow-opts label "let out anything IPv4 from firewall host itself"
+ [ Evaluations: 119238    Packets: 568593    Bytes: 412283739   States: 41    ]
+ [ Inserted: uid 0 pid 51319 ]
+@59 pass out inet6 all flags S/SA keep state allow-opts label "let out anything IPv6 from firewall host itself"
+ [ Evaluations: 27763     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@60 pass out route-to (vr2 172.20.3.1) inet from 172.20.3.14 to ! 172.20.3.0/24 flags S/SA keep state allow-opts label "let out anything from firewall host itself"
+ [ Evaluations: 27763     Packets: 2257894   Bytes: 1597027995  States: 62    ]
+ [ Inserted: uid 0 pid 51319 ]
+@61 pass out on enc0 all flags S/SA keep state label "IPsec internal host to host"
+ [ Evaluations: 27763     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@62 pass in quick on vr0 proto tcp from any to (vr0:2) port = https flags S/SA keep state label "anti-lockout rule"
+ [ Evaluations: 119238    Packets: 3048      Bytes: 489210      States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@63 pass in quick on vr0 proto tcp from any to (vr0:2) port = http flags S/SA keep state label "anti-lockout rule"
+ [ Evaluations: 53848     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@64 pass in quick on vr0 proto tcp from any to (vr0:2) port = ssh flags S/SA keep state label "anti-lockout rule"
+ [ Evaluations: 53848     Packets: 3770      Bytes: 425564      States: 1     ]
+ [ Inserted: uid 0 pid 51319 ]
+@65 pass in inet all flags S/SA keep state label "NAT REFLECT: Allow traffic to localhost" tagged PFREFLECT
+ [ Evaluations: 118624    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@66 anchor "userrules/*" all
+ [ Evaluations: 119232    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@67 match on vr2 proto udp all label "USER_RULE: DiffServ/Lowdelay/Upload" queue qVoIP
+ [ Evaluations: 119232    Packets: 5845      Bytes: 342241      States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@68 match on vr2 proto tcp from any to any port 6880 >< 7000 flags S/SA label "USER_RULE: m_P2P BitTorrent outbound" queue qP2P
+ [ Evaluations: 26728     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@69 match on vr2 proto udp from any to any port 6880 >< 7000 label "USER_RULE: m_P2P BitTorrent outbound" queue qP2P
+ [ Evaluations: 6413      Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@70 match on vr2 proto tcp from any to any port = synoptics-trap flags S/SA label "USER_RULE: m_P2P DirectConnect outbound" queue qP2P
+ [ Evaluations: 26728     Packets: 2         Bytes: 104         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@71 match on vr2 proto tcp from any to any port 1043 >< 1046 flags S/SA label "USER_RULE: m_P2P DirectFileExpress outbound" queue qP2P
+ [ Evaluations: 20315     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@72 match on vr2 proto tcp from any to any port 4660 >< 4666 flags S/SA label "USER_RULE: m_P2P EDonkey2000 outbound" queue qP2P
+ [ Evaluations: 20315     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@73 match on vr2 proto tcp from any to any port = 6346 flags S/SA label "USER_RULE: m_P2P Gnutella-TCP outbound" queue qP2P
+ [ Evaluations: 20315     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@74 match on vr2 proto udp from any to any port = 6346 label "USER_RULE: m_P2P Gnutella-UDP outbound" queue qP2P
+ [ Evaluations: 6413      Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@75 match on vr2 proto tcp from any to any port 6698 >< 6702 flags S/SA label "USER_RULE: m_P2P Napster outbound" queue qP2P
+ [ Evaluations: 26728     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@76 match on vr2 proto tcp from any to any port 8887 >< 8890 flags S/SA label "USER_RULE: m_P2P OpenNap outbound" queue qP2P
+ [ Evaluations: 20315     Packets: 2         Bytes: 88          States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@77 match on vr2 proto tcp from any to any port 6111 >< 6120 flags S/SA label "USER_RULE: m_Game Battle.NET-game1-tcp outbound" queue(qGames, qACK)
+ [ Evaluations: 20315     Packets: 4         Bytes: 240         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@78 match on vr2 proto udp from any to any port 6111 >< 6120 label "USER_RULE: m_Game Battle.NET-game1-udp outbound" queue qGames
+ [ Evaluations: 6417      Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@79 match on vr2 proto tcp from any to any port = 4000 flags S/SA label "USER_RULE: m_Game Battle.NET-diablo2 outbound" queue(qGames, qACK)
+ [ Evaluations: 26728     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@80 match on vr2 proto tcp from any to any port = 1119 flags S/SA label "USER_RULE: m_Game Battle.NET-game2 outbound" queue(qGames, qACK)
+ [ Evaluations: 20315     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@81 match on vr2 proto udp from any to any port = 7777 label "USER_RULE: m_Game Borderlands-udp outbound" queue qGames
+ [ Evaluations: 26728     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@82 match on vr2 proto tcp from any to any port = 7777 flags S/SA label "USER_RULE: m_Game Borderlands-tcp outbound" queue(qGames, qACK)
+ [ Evaluations: 20883     Packets: 1         Bytes: 44          States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@83 match on vr2 proto tcp from any to any port = 3389 flags S/SA label "USER_RULE: m_Other MSRDP outbound" queue(qOthersHigh, qACK)
+ [ Evaluations: 26160     Packets: 13        Bytes: 652         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@84 match on vr2 proto tcp from any to any port 5899 >< 5931 flags S/SA label "USER_RULE: m_Other VNC outbound" queue(qOthersHigh, qACK)
+ [ Evaluations: 20315     Packets: 23        Bytes: 1120        States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@85 match on vr2 proto tcp from any to any port = 3283 flags S/SA label "USER_RULE: m_Other AppleRemoteDesktop1 outbound" queue(qOthersHigh, qACK)
+ [ Evaluations: 20315     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@86 match on vr2 proto tcp from any to any port = 5900 flags S/SA label "USER_RULE: m_Other AppleRemoteDesktop2 outbound" queue(qOthersHigh, qACK)
+ [ Evaluations: 20315     Packets: 11        Bytes: 576         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@87 match on vr2 proto udp from any to any port = 3283 label "USER_RULE: m_Other AppleRemoteDesktop3 outbound" queue qOthersHigh
+ [ Evaluations: 26728     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@88 match on vr2 proto udp from any to any port = 5900 label "USER_RULE: m_Other AppleRemoteDesktop4 outbound" queue qOthersHigh
+ [ Evaluations: 5845      Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@89 match on vr2 proto tcp from any to any port 7999 >< 8101 flags S/SA label "USER_RULE: m_Other STREAMINGMP3 outbound" queue(qOthersHigh, qACK)
+ [ Evaluations: 26728     Packets: 30        Bytes: 1528        States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@90 match on vr2 proto tcp from any to any port = rtsp flags S/SA label "USER_RULE: m_Other RTSP1 outbound" queue(qOthersHigh, qACK)
+ [ Evaluations: 20315     Packets: 2         Bytes: 104         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@91 match on vr2 proto tcp from any to any port = domain flags S/SA label "USER_RULE: m_Other DNS1 outbound" queue(qOthersHigh, qACK)
+ [ Evaluations: 20315     Packets: 9         Bytes: 476         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@92 match on vr2 proto udp from any to any port = domain label "USER_RULE: m_Other DNS2 outbound" queue qOthersHigh
+ [ Evaluations: 6422      Packets: 3158      Bytes: 211955      States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@93 match on vr2 proto icmp all label "USER_RULE: m_Other ICMP outbound" queue qOthersHigh
+ [ Evaluations: 26728     Packets: 7         Bytes: 514         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@94 block drop in quick on vr2 inet6 all label "USER_RULE: block ipv6"
+ [ Evaluations: 26728     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@95 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = imap flags S/SA keep state label "USER_RULE: NAT IMAP"
+ [ Evaluations: 13048     Packets: 41267     Bytes: 6319080     States: 20    ]
+ [ Inserted: uid 0 pid 51319 ]
+@96 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = smtp flags S/SA keep state label "USER_RULE: NAT smtp"
+ [ Evaluations: 1319      Packets: 17911     Bytes: 1602950     States: 2     ]
+ [ Inserted: uid 0 pid 51319 ]
+@97 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = imaps flags S/SA keep state label "USER_RULE: NAT IMAP"
+ [ Evaluations: 22        Packets: 323       Bytes: 83985       States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@98 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.1 port = http flags S/SA keep state label "USER_RULE: NAT http"
+ [ Evaluations: 7763      Packets: 81125     Bytes: 46644833    States: 5     ]
+ [ Inserted: uid 0 pid 51319 ]
+@99 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.1 port = https flags S/SA keep state label "USER_RULE: NAT https"
+ [ Evaluations: 1810      Packets: 36579     Bytes: 11163786    States: 3     ]
+ [ Inserted: uid 0 pid 51319 ]
+@100 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = smtps flags S/SA keep state label "USER_RULE: NAT smtp/s"
+ [ Evaluations: 3090      Packets: 9         Bytes: 468         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@101 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.1 port = ssh flags S/SA keep state label "USER_RULE: NAT ssh"
+ [ Evaluations: 3081      Packets: 5405      Bytes: 1447724     States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@102 pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.17 port = ssh flags S/SA keep state label "USER_RULE: NAT External gitlab git"
+ [ Evaluations: 2876      Packets: 1         Bytes: 44          States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@103 block return in log quick on vr2 reply-to (vr2 172.20.3.1) inet all label "USER_RULE"
+ [ Evaluations: 5599      Packets: 5599      Bytes: 241385      States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@104 block drop in quick on vr0 inet6 all label "USER_RULE: block ipv6"
+ [ Evaluations: 92505     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@105 pass in quick on vr0 inet from 172.20.0.0/24 to any flags S/SA keep state label "USER_RULE: Default allow LAN to any rule"
+ [ Evaluations: 75768     Packets: 3183694   Bytes: 1926984346  States: 140   ]
+ [ Inserted: uid 0 pid 51319 ]
+@106 block return in quick on vr0 all label "USER_RULE"
+ [ Evaluations: 395       Packets: 395       Bytes: 35213       States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@107 block drop in quick on vr1 inet6 all label "USER_RULE: block ipv6"
+ [ Evaluations: 16129     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@108 pass in quick on vr1 inet proto tcp from 172.20.1.1 to <green_remote_ssh:2> port = ssh flags S/SA keep state label "USER_RULE: SSH home"
+ [ Evaluations: 2652      Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@109 pass in quick on vr1 inet proto tcp from any to ! 172.20.0.0/24 port = ssh flags S/SA keep state label "USER_RULE: allow outbound ssh"
+ [ Evaluations: 87        Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@110 pass in quick on vr1 inet proto tcp from <mailserver:1> to ! 172.20.0.0/24 port = smtp flags S/SA keep state label "USER_RULE: dmz: allow outbound smtp from mail"
+ [ Evaluations: 62        Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@111 pass in quick on vr1 proto tcp from any to any port = 9418 flags S/SA keep state label "USER_RULE: dmz: allow outbound git"
+ [ Evaluations: 87        Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@112 pass in quick on vr1 proto tcp from any to any port = https flags S/SA keep state label "USER_RULE: dmz: allow outbound https"
+ [ Evaluations: 87        Packets: 2874      Bytes: 2389226     States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@113 pass in quick on vr1 proto tcp from any to any port = http flags S/SA keep state label "USER_RULE: dmz: allow outbound http"
+ [ Evaluations: 69        Packets: 49940     Bytes: 45096169    States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@114 pass in quick on vr1 proto icmp all keep state label "USER_RULE: allow outbound ping"
+ [ Evaluations: 2595      Packets: 6         Bytes: 468         States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@115 pass in quick on vr1 proto tcp from any to any port = domain flags S/SA keep state label "USER_RULE: dns"
+ [ Evaluations: 2591      Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@116 pass in quick on vr1 proto udp from any to any port = domain keep state label "USER_RULE: dns"
+ [ Evaluations: 2561      Packets: 5943      Bytes: 474750      States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@117 block return in quick on vr1 inet proto tcp from ! 172.20.1.0/24 to any label "USER_RULE: drop spoofed from orange"
+ [ Evaluations: 30        Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@118 block return in quick on vr1 inet proto udp from ! 172.20.1.0/24 to any label "USER_RULE: drop spoofed from orange"
+ [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@119 block return in quick on vr1 inet from any to 172.20.0.0/24 label "USER_RULE: drop local access from dmz"
+ [ Evaluations: 30        Packets: 1         Bytes: 1043        States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@120 block return in quick on vr1 all label "USER_RULE"
+ [ Evaluations: 29        Packets: 29        Bytes: 1273        States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@121 anchor "tftp-proxy/*" all
+ [ Evaluations: 27765     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+[
