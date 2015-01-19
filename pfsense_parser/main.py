@@ -20,12 +20,13 @@ def main():
                 type = item['type'] 
 
                 if item.has_key('label'):
-                    columns = (id, item['label'] )
+                    columns = (id, item['label'], type )
                 else:
-                    columns = (id, item['msg'])
+                    columns = (id, item['msg'], type )
 
-                if type == 'block':
-                    print('"%s": %s' % columns)
+                # scrub duplicates IDs
+                if type != 'scrub':
+                    print('"{0}": {1} ({2})'.format(*columns))
 
 if __name__ == '__main__':
     main()
