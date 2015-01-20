@@ -11,8 +11,8 @@ config = {
     'download_url': 'TODO',
     'author_email': 'TODO',
     'version': '0.1',
-    'install_requires': [],
-    'packages': ['pfsense_parser', 'main'],
+    'install_requires': ['argparse', 'nose'],
+    'packages': ['pfsense_parser', 'cli'],
     'name': 'pfsenseparser',
     'license': 'BSD',
     'classifiers': [
@@ -22,7 +22,7 @@ config = {
                    ],
     'entry_points':{
              'console_scripts': [
-                   'pfSense2Logstash=main.cli:main',
+                   'pfSense2Logstash=cli.cli:main',
                                 ],
              'gui_scripts': [ ]
                    }

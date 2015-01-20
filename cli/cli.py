@@ -1,18 +1,20 @@
 #!/usr/bin/env python
 
 import sys
+import cli_argparser
 import pfsense_parser
 
 def main():
-    if len(sys.argv) != 2:
-        print "Usage: script /path/to/inputfile"
+    args = cli_argparser.from_argv(sys.argv)
+    if args.has_parse_error:
+        # print "Usage: script /path/to/inputfile"
         return
-
-    fname = sys.argv[1]
 
     parser = pfsense_parser.Parser()
 
-    with open(fname) as f:
+    data_file = args.data_file
+
+    with open(data_file) as f:
         items = parser.parse(f.readlines())
         for item in items:
             if item:
@@ -24,8 +26,7 @@ def main():
                 else:
                     columns = (id, item['msg'], type )
 
-                # scrub duplicates IDs
-                if type != 'scrub':
+                if type in args.filter_for_types:
                     print('"{0}": {1} ({2})'.format(*columns))
 
 if __name__ == '__main__':
