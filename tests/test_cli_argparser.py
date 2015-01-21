@@ -33,19 +33,34 @@ class CliArgParser_Test(unittest.TestCase):
         self.assertEquals(sut.filter_for_types,["anchor","block","pass"])
 
     def test_filter_for_types_three__is_correct(self):
-        sut = self.create_sut(["/script/name", "--filter-for-types=anchor,block,pass", "datafile"])
+        sut = self.create_sut(["/script/name", "--filter=anchor,block,pass", "datafile"])
         self.assertFalse(sut.has_parse_error)
         self.assertEquals(sut.filter_for_types,["anchor","block","pass"])
 
     def test_filter_for_types_two__is_correct(self):
-        sut = self.create_sut(["/script/name", "--filter-for-types=anchor,pass", "datafile"])
+        sut = self.create_sut(["/script/name", "--filter=anchor,pass", "datafile"])
         self.assertFalse(sut.has_parse_error)
         self.assertEquals(sut.filter_for_types,["anchor","pass"])
 
     def test_filter_for_types_one__is_correct(self):
-        sut = self.create_sut(["/script/name", "--filter-for-types=block", "datafile"])
+        sut = self.create_sut(["/script/name", "--filter=block", "datafile"])
         self.assertFalse(sut.has_parse_error)
         self.assertEquals(sut.filter_for_types, ["block"])
+
+    def test_default_format__is_present(self):
+        sut = self.create_sut(["/script/name", "datafile"])
+        self.assertFalse(sut.has_parse_error)
+        self.assertEquals(sut.format_string, "'%(id)i':'%(label)s%(msg)s'")
+
+    def test_format__is_parsed(self):
+        sut = self.create_sut(["/script/name", "--format='%(id)i':'%(label)s%(msg)s'", "datafile"])
+        self.assertFalse(sut.has_parse_error)
+        self.assertEquals(sut.format_string, "'%(id)i':'%(label)s%(msg)s'")
+
+    def test_format__is_parsed2(self):
+        sut = self.create_sut(["/script/name", "--format=xxx", "datafile"])
+        self.assertFalse(sut.has_parse_error)
+        self.assertEquals(sut.format_string, "xxx")
 
 if __name__ == '__main__':
     unittest.main()

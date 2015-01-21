@@ -13,21 +13,17 @@ def main():
     parser = pfsense_parser.Parser()
 
     data_file = args.data_file
+    format_string = args.format_string
 
     with open(data_file) as f:
         items = parser.parse(f.readlines())
         for item in items:
             if item:
-                id = item['id'] 
-                type = item['type'] 
+                if item['type'] in args.filter_for_types:
+                    if not 'label' in item:
+                        item['label'] = '' # item['msg']
 
-                if item.has_key('label'):
-                    columns = (id, item['label'], type )
-                else:
-                    columns = (id, item['msg'], type )
-
-                if type in args.filter_for_types:
-                    print('"{0}": {1} ({2})'.format(*columns))
+                    print(format_string % item)
 
 if __name__ == '__main__':
     main()

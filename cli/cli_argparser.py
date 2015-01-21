@@ -15,28 +15,35 @@ class CliArgParser(object):
         self.has_parse_error = True
         self.script_name = None
         self.data_file = None
+        self.format_string = None
         self.filter_for_types = None
 
     def parse(self):
         self.script_name = self.argv.pop(0)
         parser = argparse.ArgumentParser(prog=self.script_name, description = 'pfSense firewall rule parser')
 
-        parser.add_argument("--filter-for-types", 
+        parser.add_argument("--filter", 
                             help="Only export the mentioned types (e.g. block or anchor,block,pass). Comma separated", 
                             type=comma_separated, 
                             nargs=1,
                             dest='filter_for_types',
                             default="anchor,block,pass")
 
+        parser.add_argument("--format", 
+                            help="Format string for pythons '%' operator with a dictionary. Allowed fileds: id,type,label,msg", 
+                            nargs=1,
+                            dest='format_string',
+                            default="'%(id)i':'%(label)s%(msg)s'")
+
         parser.add_argument("data_file", help="An export of pfctl -vvvsr")
 
         try:
             args = parser.parse_args(self.argv)
+
             self.data_file = args.data_file
-            if isinstance(args.filter_for_types, basestring):
-                self.filter_for_types = args.filter_for_types.split(",")
-            else:
-                self.filter_for_types = args.filter_for_types[0].split(",")
+            self.format_string = _strip_list(args.format_string)
+            self.filter_for_types = _strip_list(args.filter_for_types).split(",")
+
             self.has_parse_error = False
         except SystemExit as se:
             # argparse is rather fast at System.exiting ..
@@ -45,6 +52,12 @@ class CliArgParser(object):
         except Exception as e:
             self.has_parse_error = True
             #print(e)
+
+def _strip_list(v):
+            if isinstance(v, basestring):
+                return v
+            else:
+                return v[0]
 
 def from_argv(argv):
     ret = CliArgParser(argv)
