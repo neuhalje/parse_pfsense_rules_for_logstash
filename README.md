@@ -18,7 +18,9 @@ Usage
 Example Result
 ----------------
 
-```text input
+### Input file
+
+```text
 @0 scrub on vr2 all fragment reassemble
  [ Evaluations: 12882073  Packets: 5093291   Bytes: 1673472449  States: 0     ]
  [ Inserted: uid 0 pid 51319 ]
@@ -39,7 +41,9 @@ Example Result
  [ Inserted: uid 0 pid 51319 ]
 ```
 
-```text output
+### Output
+
+```text
 '0':'"relayd/*" all'
 '1':'"openvpn/*" all'
 '3':'Block all IPv6drop in log quick inet6 all'
