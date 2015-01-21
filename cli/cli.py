@@ -7,7 +7,6 @@ import pfsense_parser
 def main():
     args = cli_argparser.from_argv(sys.argv)
     if args.has_parse_error:
-        # print "Usage: script /path/to/inputfile"
         return
 
     parser = pfsense_parser.Parser()
