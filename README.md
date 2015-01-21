@@ -18,25 +18,33 @@ Usage
 Example Result
 ----------------
 
-```text
-...
-"0": "relayd/*" all (anchor)
-"1": "openvpn/*" all (anchor)
-"2": "ipsec/*" all (anchor)
-"3": Block all IPv6 (block)
-"4": Block all IPv6 (block)
-"5": Default deny rule IPv4 (block)
-"6": Default deny rule IPv4 (block)
-"7": Default deny rule IPv6 (block)
-"8": Default deny rule IPv6 (block)
-...
-"84": on vr2 proto tcp from any to any port 5899 >< 5931 flags S/SA label "USER_RULE: m_Other VNC outbound" queue (qOthersHigh, qACK) (match)
-...
-"110": USER_RULE: dmz: allow outbound smtp from mail (pass)
-"111": USER_RULE: dmz: allow outbound git (pass)
-"112": USER_RULE: dmz: allow outbound https (pass)
-"113": USER_RULE: dmz: allow outbound http (pass)
-...
+```text input
+@0 scrub on vr2 all fragment reassemble
+ [ Evaluations: 12882073  Packets: 5093291   Bytes: 1673472449  States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@0 anchor "relayd/*" all
+ [ Evaluations: 120503    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@1 anchor "openvpn/*" all
+ [ Evaluations: 120503    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@3 block drop in log quick inet6 all label "Block all IPv6"
+ [ Evaluations: 120503    Packets: 1170      Bytes: 84240       States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@120 block return in quick on vr1 all label "USER_RULE"
+ [ Evaluations: 29        Packets: 29        Bytes: 1273        States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@121 anchor "tftp-proxy/*" all
+ [ Evaluations: 27765     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+```
+
+```text output
+'0':'"relayd/*" all'
+'1':'"openvpn/*" all'
+'3':'Block all IPv6drop in log quick inet6 all'
+'120':'USER_RULEreturn in quick on vr1 all'
+'121':'"tftp-proxy/*" all'
 ```
 
 Example Logstash Config

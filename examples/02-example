@@ -1,0 +1,19 @@
+@0 scrub on vr2 all fragment reassemble
+ [ Evaluations: 12882073  Packets: 5093291   Bytes: 1673472449  States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@0 anchor "relayd/*" all
+ [ Evaluations: 120503    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@1 anchor "openvpn/*" all
+ [ Evaluations: 120503    Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@3 block drop in log quick inet6 all label "Block all IPv6"
+ [ Evaluations: 120503    Packets: 1170      Bytes: 84240       States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@120 block return in quick on vr1 all label "USER_RULE"
+ [ Evaluations: 29        Packets: 29        Bytes: 1273        States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+@121 anchor "tftp-proxy/*" all
+ [ Evaluations: 27765     Packets: 0         Bytes: 0           States: 0     ]
+ [ Inserted: uid 0 pid 51319 ]
+[
