@@ -7,6 +7,7 @@ Installing
 ------------
 * From GitHub: `pip install https://github.com/neuhalje/parse_pfsense_rules_for_logstash/zipball/master`
 * local installation: `python setup.py  install`
+* directly call `./pfSense2Logstash`
 
 Usage
 ---------
