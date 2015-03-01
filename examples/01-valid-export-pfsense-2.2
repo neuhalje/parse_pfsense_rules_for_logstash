@@ -1,1 +1,420 @@
-
+@0(0) scrub on vr2 all fragment reassemble
+  [ Evaluations: 936103    Packets: 482368    Bytes: 177156986   States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303027544]
+@1(0) scrub on vr0 all fragment reassemble
+  [ Evaluations: 453735    Packets: 409501    Bytes: 168288195   States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303027520]
+@2(0) scrub on vr1 all fragment reassemble
+  [ Evaluations: 44234     Packets: 44154     Bytes: 6303468     States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303027496]
+@0(0) anchor "relayd/*" all
+  [ Evaluations: 8024      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869320]
+@1(0) anchor "openvpn/*" all
+  [ Evaluations: 8024      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869296]
+@2(0) anchor "ipsec/*" all
+  [ Evaluations: 8024      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869272]
+@3(1000105491) pass in quick on lo0 inet6 all flags S/SA keep state label "pass IPv6 loopback"
+  [ Evaluations: 8024      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869248]
+@4(1000105492) pass out quick on lo0 inet6 all flags S/SA keep state label "pass IPv6 loopback"
+  [ Evaluations: 20        Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869224]
+@5(1000105493) block drop in log quick inet6 all label "Block all IPv6"
+  [ Evaluations: 7984      Packets: 237       Bytes: 17064       States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869200]
+@6(1000105494) block drop out log quick inet6 all label "Block all IPv6"
+  [ Evaluations: 3710      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869176]
+@7(1000105591) block drop in log quick inet from 169.254.0.0/16 to any label "Block IPv4 link-local"
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869152]
+@8(1000105592) block drop in log quick inet from any to 169.254.0.0/16 label "Block IPv4 link-local"
+  [ Evaluations: 4057      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869128]
+@9(1000105593) block drop in log inet all label "Default deny rule IPv4"
+  [ Evaluations: 4057      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869104]
+@10(1000105594) block drop out log inet all label "Default deny rule IPv4"
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869080]
+@11(1000105595) block drop in log inet6 all label "Default deny rule IPv6"
+  [ Evaluations: 7786      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869056]
+@12(1000105596) block drop out log inet6 all label "Default deny rule IPv6"
+  [ Evaluations: 3730      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869032]
+@13(1000105597) pass quick inet6 proto ipv6-icmp all icmp6-type unreach keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306869008]
+@14(1000105597) pass quick inet6 proto ipv6-icmp all icmp6-type toobig keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868984]
+@15(1000105597) pass quick inet6 proto ipv6-icmp all icmp6-type neighbrsol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868960]
+@16(1000105597) pass quick inet6 proto ipv6-icmp all icmp6-type neighbradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868936]
+@17(1000105598) pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type echorep keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868912]
+@18(1000105598) pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routersol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868888]
+@19(1000105598) pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routeradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868864]
+@20(1000105598) pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type neighbrsol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868840]
+@21(1000105598) pass out quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type neighbradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868816]
+@22(1000105599) pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type echorep keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868792]
+@23(1000105599) pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routersol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868768]
+@24(1000105599) pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routeradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306868744]
+@25(1000105599) pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type neighbrsol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836976]
+@26(1000105599) pass out quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type neighbradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836952]
+@27(1000105600) pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type echoreq keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836928]
+@28(1000105600) pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routersol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836904]
+@29(1000105600) pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type routeradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836880]
+@30(1000105600) pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type neighbrsol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836856]
+@31(1000105600) pass in quick inet6 proto ipv6-icmp from fe80::/10 to fe80::/10 icmp6-type neighbradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836832]
+@32(1000105601) pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type echoreq keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836808]
+@33(1000105601) pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type routersol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836784]
+@34(1000105601) pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type routeradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836760]
+@35(1000105601) pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type neighbrsol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836736]
+@36(1000105601) pass in quick inet6 proto ipv6-icmp from ff02::/16 to fe80::/10 icmp6-type neighbradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836712]
+@37(1000105602) pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type echoreq keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836688]
+@38(1000105602) pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routersol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836664]
+@39(1000105602) pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type routeradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836640]
+@40(1000105602) pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type neighbrsol keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836616]
+@41(1000105602) pass in quick inet6 proto ipv6-icmp from fe80::/10 to ff02::/16 icmp6-type neighbradv keep state
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836592]
+@42(1000105603) block drop log quick inet proto tcp from any port = 0 to any
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836568]
+@43(1000105603) block drop log quick inet proto udp from any port = 0 to any
+  [ Evaluations: 2936      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836544]
+@44(1000105604) block drop log quick inet proto tcp from any to any port = 0
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836520]
+@45(1000105604) block drop log quick inet proto udp from any to any port = 0
+  [ Evaluations: 2936      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836496]
+@46(1000105605) block drop log quick inet6 proto tcp from any port = 0 to any
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836472]
+@47(1000105605) block drop log quick inet6 proto udp from any port = 0 to any
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836448]
+@48(1000105606) block drop log quick inet6 proto tcp from any to any port = 0
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836424]
+@49(1000105606) block drop log quick inet6 proto udp from any to any port = 0
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836400]
+@50(1000105607) block drop log quick from <snort2c:0> to any label "Block snort2c hosts"
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836376]
+@51(1000105608) block drop log quick from any to <snort2c:0> label "Block snort2c hosts"
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836352]
+@52(1000105791) block drop in log quick proto tcp from <sshlockout:0> to (self:9) port = ssh label "sshlockout"
+  [ Evaluations: 7787      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836328]
+@53(1000105841) block drop in log quick proto tcp from <webConfiguratorlockout:0> to (self:9) port = https label "webConfiguratorlockout"
+  [ Evaluations: 2404      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836304]
+@54(1000000400) block drop in log quick from <virusprot:0> to any label "virusprot overload table"
+  [ Evaluations: 4065      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836280]
+@55(1000107060) block drop in log on ! vr2 inet from 172.20.3.0/24 to any
+  [ Evaluations: 4057      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836256]
+@56(1000107060) block drop in log inet from 172.20.3.14 to any
+  [ Evaluations: 4057      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836232]
+@57(1000107060) block drop in log on vr2 inet6 from fe80::20d:b9ff:fe1e:59ae to any
+  [ Evaluations: 4057      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836208]
+@58(1000108091) block drop in log quick on vr0 from <bogons:10> to any label "block bogon IPv4 networks from GREEN"
+  [ Evaluations: 4057      Packets: 19        Bytes: 8007        States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836184]
+@59(1000108110) block drop in log on ! vr0 inet from 172.20.0.0/24 to any
+  [ Evaluations: 4038      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836160]
+@60(1000108110) block drop in log inet from 172.20.0.14 to any
+  [ Evaluations: 4038      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836136]
+@61(1000108110) block drop in log on vr0 inet6 from fe80::20d:b9ff:fe1e:59ac to any
+  [ Evaluations: 4038      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836112]
+@62(1000108131) pass in quick on vr0 inet proto udp from any port = bootpc to 255.255.255.255 port = bootps keep state label "allow access to DHCP server"
+  [ Evaluations: 3008      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836088]
+@63(1000108132) pass in quick on vr0 inet proto udp from any port = bootpc to 172.20.0.14 port = bootps keep state label "allow access to DHCP server"
+  [ Evaluations: 13        Packets: 26        Bytes: 8625        States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836064]
+@64(1000108133) pass out quick on vr0 inet proto udp from 172.20.0.14 port = bootps to any port = bootpc keep state label "allow access to DHCP server"
+  [ Evaluations: 5078      Packets: 3         Bytes: 1011        States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836040]
+@65(1000109160) block drop in log on ! vr1 inet from 172.20.1.0/24 to any
+  [ Evaluations: 7752      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306836016]
+@66(1000109160) block drop in log inet from 172.20.1.14 to any
+  [ Evaluations: 4718      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306835992]
+@67(1000109160) block drop in log on vr1 inet6 from fe80::20d:b9ff:fe1e:59ad to any
+  [ Evaluations: 4025      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306835968]
+@68(1000110251) pass in on lo0 inet all flags S/SA keep state label "pass IPv4 loopback"
+  [ Evaluations: 4025      Packets: 40        Bytes: 6590        States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060456]
+@69(1000110252) pass out on lo0 inet all flags S/SA keep state label "pass IPv4 loopback"
+  [ Evaluations: 3747      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060432]
+@70(1000110253) pass in on lo0 inet6 all flags S/SA keep state label "pass IPv6 loopback"
+  [ Evaluations: 40        Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060408]
+@71(1000110254) pass out on lo0 inet6 all flags S/SA keep state label "pass IPv6 loopback"
+  [ Evaluations: 20        Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060384]
+@72(1000110255) pass out inet all flags S/SA keep state allow-opts label "let out anything IPv4 from firewall host itself"
+  [ Evaluations: 7752      Packets: 22018     Bytes: 6426633     States: 5     ]
+  [ Inserted: pid 30414 State Creations: 3303060360]
+@73(1000110256) pass out inet6 all flags S/SA keep state allow-opts label "let out anything IPv6 from firewall host itself"
+  [ Evaluations: 3727      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060336]
+@74(1000110351) pass out route-to (vr2 172.20.3.1) inet from 172.20.3.14 to ! 172.20.3.0/24 flags S/SA keep state allow-opts label "let out anything from firewall host itself"
+  [ Evaluations: 3727      Packets: 207669    Bytes: 172012586   States: 37    ]
+  [ Inserted: pid 30414 State Creations: 3303060312]
+@75(1000110652) pass out on enc0 all flags S/SA keep state label "IPsec internal host to host"
+  [ Evaluations: 3727      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060288]
+@76(1000110661) pass in quick on vr0 proto tcp from any to (vr0:2) port = https flags S/SA keep state label "anti-lockout rule"
+  [ Evaluations: 7752      Packets: 1075      Bytes: 372609      States: 4     ]
+  [ Inserted: pid 30414 State Creations: 3303060264]
+@77(1000110661) pass in quick on vr0 proto tcp from any to (vr0:2) port = http flags S/SA keep state label "anti-lockout rule"
+  [ Evaluations: 5         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060240]
+@78(1000110661) pass in quick on vr0 proto tcp from any to (vr0:2) port = ssh flags S/SA keep state label "anti-lockout rule"
+  [ Evaluations: 5         Packets: 1028      Bytes: 189031      States: 1     ]
+  [ Inserted: pid 30414 State Creations: 3303060216]
+@79(1000110681) pass in inet all flags S/SA keep state label "NAT REFLECT: Allow traffic to localhost" tagged PFREFLECT
+  [ Evaluations: 7510      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060192]
+@80(0) anchor "userrules/*" all
+  [ Evaluations: 7732      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3303060168]
+@81(1425232559) match on vr2 proto udp all label "USER_RULE: DiffServ/Lowdelay/Upload" queue qVoIP
+  [ Evaluations: 7750      Packets: 1270      Bytes: 122096      States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012736]
+@82(1425232560) match on vr2 proto tcp from any to any port 6880 >< 7000 flags S/SA label "USER_RULE: m_P2P BitTorrent outbound" queue qP2P
+  [ Evaluations: 3689      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012712]
+@83(1425232561) match on vr2 proto udp from any to any port 6880 >< 7000 label "USER_RULE: m_P2P BitTorrent outbound" queue qP2P
+  [ Evaluations: 1384      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012688]
+@84(1425232562) match on vr2 proto tcp from any to any port = synoptics-trap flags S/SA label "USER_RULE: m_P2P DirectConnect outbound" queue qP2P
+  [ Evaluations: 3689      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012664]
+@85(1425232563) match on vr2 proto tcp from any to any port 1043 >< 1046 flags S/SA label "USER_RULE: m_P2P DirectFileExpress outbound" queue qP2P
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012640]
+@86(1425232564) match on vr2 proto tcp from any to any port 4660 >< 4666 flags S/SA label "USER_RULE: m_P2P EDonkey2000 outbound" queue qP2P
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012616]
+@87(1425232565) match on vr2 proto tcp from any to any port = 6346 flags S/SA label "USER_RULE: m_P2P Gnutella-TCP outbound" queue qP2P
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012592]
+@88(1425232566) match on vr2 proto udp from any to any port = 6346 label "USER_RULE: m_P2P Gnutella-UDP outbound" queue qP2P
+  [ Evaluations: 1384      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012568]
+@89(1425232567) match on vr2 proto tcp from any to any port 6698 >< 6702 flags S/SA label "USER_RULE: m_P2P Napster outbound" queue qP2P
+  [ Evaluations: 3689      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012544]
+@90(1425232568) match on vr2 proto tcp from any to any port 8887 >< 8890 flags S/SA label "USER_RULE: m_P2P OpenNap outbound" queue qP2P
+  [ Evaluations: 2305      Packets: 1         Bytes: 44          States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012520]
+@91(1425232569) match on vr2 proto tcp from any to any port 6111 >< 6120 flags S/SA label "USER_RULE: m_Game Battle.NET-game1-tcp outbound" queue(qGames, qACK)
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012496]
+@92(1425232570) match on vr2 proto udp from any to any port 6111 >< 6120 label "USER_RULE: m_Game Battle.NET-game1-udp outbound" queue qGames
+  [ Evaluations: 1384      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012472]
+@93(1425232571) match on vr2 proto tcp from any to any port = 4000 flags S/SA label "USER_RULE: m_Game Battle.NET-diablo2 outbound" queue(qGames, qACK)
+  [ Evaluations: 3689      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012448]
+@94(1425232572) match on vr2 proto tcp from any to any port = 1119 flags S/SA label "USER_RULE: m_Game Battle.NET-game2 outbound" queue(qGames, qACK)
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012424]
+@95(1425232573) match on vr2 proto udp from any to any port = 7777 label "USER_RULE: m_Game Borderlands-udp outbound" queue qGames
+  [ Evaluations: 3689      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012400]
+@96(1425232574) match on vr2 proto tcp from any to any port = 7777 flags S/SA label "USER_RULE: m_Game Borderlands-tcp outbound" queue(qGames, qACK)
+  [ Evaluations: 2419      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012376]
+@97(1425232575) match on vr2 proto tcp from any to any port = 3389 flags S/SA label "USER_RULE: m_Other MSRDP outbound" queue(qOthersHigh, qACK)
+  [ Evaluations: 3575      Packets: 4         Bytes: 196         States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012352]
+@98(1425232576) match on vr2 proto tcp from any to any port 5899 >< 5931 flags S/SA label "USER_RULE: m_Other VNC outbound" queue(qOthersHigh, qACK)
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012328]
+@99(1425232577) match on vr2 proto tcp from any to any port = 3283 flags S/SA label "USER_RULE: m_Other AppleRemoteDesktop1 outbound" queue(qOthersHigh, qACK)
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012304]
+@100(1425232578) match on vr2 proto tcp from any to any port = 5900 flags S/SA label "USER_RULE: m_Other AppleRemoteDesktop2 outbound" queue(qOthersHigh, qACK)
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012280]
+@101(1425232579) match on vr2 proto udp from any to any port = 3283 label "USER_RULE: m_Other AppleRemoteDesktop3 outbound" queue qOthersHigh
+  [ Evaluations: 3689      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012256]
+@102(1425232580) match on vr2 proto udp from any to any port = 5900 label "USER_RULE: m_Other AppleRemoteDesktop4 outbound" queue qOthersHigh
+  [ Evaluations: 1270      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012232]
+@103(1425232581) match on vr2 proto tcp from any to any port 7999 >< 8101 flags S/SA label "USER_RULE: m_Other STREAMINGMP3 outbound" queue(qOthersHigh, qACK)
+  [ Evaluations: 3689      Packets: 8         Bytes: 388         States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012208]
+@104(1425232582) match on vr2 proto tcp from any to any port = rtsp flags S/SA label "USER_RULE: m_Other RTSP1 outbound" queue(qOthersHigh, qACK)
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012184]
+@105(1425232583) match on vr2 proto tcp from any to any port = domain flags S/SA label "USER_RULE: m_Other DNS1 outbound" queue(qOthersHigh, qACK)
+  [ Evaluations: 2305      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012160]
+@106(1425232584) match on vr2 proto udp from any to any port = domain label "USER_RULE: m_Other DNS2 outbound" queue qOthersHigh
+  [ Evaluations: 1384      Packets: 975       Bytes: 64663       States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012136]
+@107(1425232585) match on vr2 proto icmp all label "USER_RULE: m_Other ICMP outbound" queue qOthersHigh
+  [ Evaluations: 3689      Packets: 1         Bytes: 64          States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3307012112]
+@108(1425232586) block drop in quick on vr2 inet6 all label "USER_RULE: block ipv6"
+  [ Evaluations: 3689      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980344]
+@109(1425232587) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = imap flags S/SA keep state label "USER_RULE: NAT IMAP"
+  [ Evaluations: 890       Packets: 1169      Bytes: 235651      States: 2     ]
+  [ Inserted: pid 30414 State Creations: 3306980320]
+@110(1425232588) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = smtp flags S/SA keep state label "USER_RULE: NAT smtp"
+  [ Evaluations: 23        Packets: 574       Bytes: 177290      States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980296]
+@111(1425232589) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = imaps flags S/SA keep state label "USER_RULE: NAT IMAP"
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980272]
+@112(1425232590) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.1 port = http flags S/SA keep state label "USER_RULE: NAT http"
+  [ Evaluations: 734       Packets: 4973      Bytes: 2411487     States: 1     ]
+  [ Inserted: pid 30414 State Creations: 3306980248]
+@113(1425232591) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.1 port = https flags S/SA keep state label "USER_RULE: NAT https"
+  [ Evaluations: 520       Packets: 1822      Bytes: 538240      States: 1     ]
+  [ Inserted: pid 30414 State Creations: 3306980224]
+@114(1425232592) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.4 port = smtps flags S/SA keep state label "USER_RULE: NAT smtp/s"
+  [ Evaluations: 521       Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980200]
+@115(1425232593) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.1 port = ssh flags S/SA keep state label "USER_RULE: NAT ssh"
+  [ Evaluations: 521       Packets: 12514     Bytes: 2946028     States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980176]
+@116(1425232594) pass in log quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.17 port = ssh flags S/SA keep state label "USER_RULE: NAT External gitlab git"
+  [ Evaluations: 79        Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980152]
+@117(1425232595) pass in quick on vr2 reply-to (vr2 172.20.3.1) inet proto tcp from any to 172.20.1.43 port = 6544 flags S/SA keep state label "USER_RULE: NAT Taskwarrior"
+  [ Evaluations: 79        Packets: 26        Bytes: 9200        States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980128]
+@118(1425232596) block return in log quick on vr2 reply-to (vr2 172.20.3.1) inet all label "USER_RULE"
+  [ Evaluations: 199       Packets: 199       Bytes: 8550        States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980104]
+@119(1425232597) block drop in quick on vr0 inet6 all label "USER_RULE: block ipv6"
+  [ Evaluations: 4061      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980080]
+@120(1425232598) pass in quick on vr0 inet from 172.20.0.0/24 to any flags S/SA keep state label "USER_RULE: Default allow LAN to any rule"
+  [ Evaluations: 2976      Packets: 203637    Bytes: 168870392   States: 39    ]
+  [ Inserted: pid 30414 State Creations: 3306980056]
+@121(1425232599) block return in quick on vr0 all label "USER_RULE"
+  [ Evaluations: 84        Packets: 84        Bytes: 7895        States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980032]
+@122(1425232601) block drop in quick on vr1 inet6 all label "USER_RULE: block ipv6"
+  [ Evaluations: 863       Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306980008]
+@123(1425232602) pass in quick on vr1 inet proto tcp from 172.20.1.1 to <green_remote_ssh:2> port = ssh flags S/SA keep state label "USER_RULE: SSH home"
+  [ Evaluations: 123       Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979984]
+@124(1425232603) pass in quick on vr1 inet proto tcp from any to ! 172.20.0.0/24 port = ssh flags S/SA keep state label "USER_RULE: allow outbound ssh"
+  [ Evaluations: 6         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979960]
+@125(1425232604) pass in quick on vr1 inet proto tcp from <mailserver:1> to ! 172.20.0.0/24 port = smtp flags S/SA keep state label "USER_RULE: dmz: allow outbound smtp from mail"
+  [ Evaluations: 5         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979936]
+@126(1425232605) pass in quick on vr1 proto tcp from any to any port = 9418 flags S/SA keep state label "USER_RULE: dmz: allow outbound git"
+  [ Evaluations: 6         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979912]
+@127(1425232606) pass in quick on vr1 proto tcp from any to any port = https flags S/SA keep state label "USER_RULE: dmz: allow outbound https"
+  [ Evaluations: 6         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979888]
+@128(1425232607) pass in quick on vr1 proto tcp from any to any port = http flags S/SA keep state label "USER_RULE: dmz: allow outbound http"
+  [ Evaluations: 6         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979864]
+@129(1425232608) pass in quick on vr1 proto icmp all keep state label "USER_RULE: allow outbound ping"
+  [ Evaluations: 123       Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979840]
+@130(1425232609) pass in quick on vr1 proto tcp from any to any port = domain flags S/SA keep state label "USER_RULE: dns"
+  [ Evaluations: 123       Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979816]
+@131(1425232609) pass in quick on vr1 proto udp from any to any port = domain keep state label "USER_RULE: dns"
+  [ Evaluations: 118       Packets: 246       Bytes: 35025       States: 1     ]
+  [ Inserted: pid 30414 State Creations: 3306979792]
+@132(1425232610) block return in quick on vr1 inet proto tcp from ! 172.20.1.0/24 to any label "USER_RULE: drop spoofed from orange"
+  [ Evaluations: 6         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979768]
+@133(1425232610) block return in quick on vr1 inet proto udp from ! 172.20.1.0/24 to any label "USER_RULE: drop spoofed from orange"
+  [ Evaluations: 1         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979744]
+@134(1425232611) block return in quick on vr1 inet from any to 172.20.0.0/24 label "USER_RULE: drop local access from dmz"
+  [ Evaluations: 6         Packets: 1         Bytes: 53          States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979720]
+@135(1425232612) block return in quick on vr1 all label "USER_RULE"
+  [ Evaluations: 5         Packets: 5         Bytes: 412         States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979696]
+@136(0) anchor "tftp-proxy/*" all
+  [ Evaluations: 3747      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: pid 30414 State Creations: 3306979672]
