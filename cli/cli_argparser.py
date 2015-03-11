@@ -1,4 +1,5 @@
 import argparse
+from argparse import ArgumentTypeError
 
 def comma_separated(v):
     import re
