@@ -1,10 +1,32 @@
 import unittest
 import cli
+from cli import cli_argparser
 
 class CliArgParser_Test(unittest.TestCase):
 
     def create_sut(self, argv):
         return cli.from_argv(argv)
+
+    def test_version_string_recognizes_2_1(self):
+        self.assertEquals(cli_argparser.version_string("2.1"),"2.1")
+
+    def test_version_string_recognizes_2_2(self):
+        self.assertEquals(cli_argparser.version_string("2.2"),"2.2")
+
+    def test_version_string_rejects_2_3(self):
+        try:
+            cli_argparser.version_string("2.3")
+            self.assertTrue(false)
+        except Exception:
+            pass
+
+    def test_version_string_rejects_empty_version(self):
+        try:
+            cli_argparser.version_string("")
+            self.assertTrue(false)
+        except Exception:
+            pass
+
 
     def test_no_args__parses_to__error(self):
         sut = self.create_sut(["/script/name"])
@@ -61,6 +83,19 @@ class CliArgParser_Test(unittest.TestCase):
         sut = self.create_sut(["/script/name", "--format=xxx", "datafile"])
         self.assertFalse(sut.has_parse_error)
         self.assertEquals(sut.format_string, "xxx")
+    
+    def test_good_pfsenseversion__is_parsed(self):
+        sut = self.create_sut(["/script/name", "--pfsense-version=2.1", "datafile"])
+        self.assertFalse(sut.has_parse_error)
+        self.assertEquals(sut.pfsense_version, "2.1")
+    
+    def test_unknown_pfsenseversion__fails(self):
+        sut = self.create_sut(["/script/name", "--pfsense-version=2.3", "datafile"])
+        self.assertTrue(sut.has_parse_error)
+    
+    def test_empty_pfsenseversion__fails(self):
+        sut = self.create_sut(["/script/name", "--pfsense-version=", "datafile"])
+        self.assertTrue(sut.has_parse_error)
 
 if __name__ == '__main__':
     unittest.main()

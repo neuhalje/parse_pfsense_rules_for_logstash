@@ -13,6 +13,7 @@ def main():
 
     data_file = args.data_file
     format_string = args.format_string
+    pfsense_version = args.pfsense_version
 
     with open(data_file) as f:
         items = parser.parse(f.readlines())
