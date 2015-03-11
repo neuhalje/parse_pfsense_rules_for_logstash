@@ -4,8 +4,7 @@ import pfsense_parser
 class ParserTest(unittest.TestCase):
 
     def create_sut(self):
-        #return pfsense_parser.parser.Parser()
-        return pfsense_parser.Parser()
+        return pfsense_parser.Parser21()
 
     def test_empty_string__parses_to__empty_list(self):
         sut = self.create_sut()

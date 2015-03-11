@@ -1,1 +1,2 @@
-from pfsense_parser.parser import  Parser
+from pfsense_parser.parser21 import  Parser21
+from pfsense_parser.parser22 import  Parser22

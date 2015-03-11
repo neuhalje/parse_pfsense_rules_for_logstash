@@ -1,6 +1,6 @@
 import re
 
-class Parser(object):
+class Parser21(object):
     def parse(self, input):
         self.result = []
 
