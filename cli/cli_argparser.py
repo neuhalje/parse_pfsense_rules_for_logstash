@@ -6,14 +6,14 @@ def comma_separated(v):
     try:
         return re.match("^\w+(?:,\w+)*$", v).group(0)
     except:
-        raise ArgumentTypeError("%s' needs to be  a list type1[,type2]*"%(v,))
+        raise ArgumentTypeError("'%s' needs to be  a list type1[,type2]*"%(v,))
 
 def version_string(v):
     import re
     try:
         return re.match("^2[.][12]$", v).group(0)
     except:
-        raise ArgumentTypeError("%s' needs to be  a version 2.1 or 2.2."%(v,))
+        raise ArgumentTypeError("'%s' needs to be a version 2.1 or 2.2."%(v,))
 
 class CliArgParser(object):
 
