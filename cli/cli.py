@@ -5,14 +5,14 @@ import cli_argparser
 import pfsense_parser
 
 
-def parser(version):
+def build_parser(version):
     if version == "2.1":
         return pfsense_parser.Parser21()
     elif version == "2.2":
-        parser = pfsense_parser.Parser22()
-    else:
-        # Should have been handled in the arg parser
-        return None
+        return pfsense_parser.Parser22()
+
+    # Should have been handled in the arg parser -> No need for gracefulness
+    raise Exception("Do not know how to create parser for '%s'!" % (version,))
 
 
 
@@ -26,7 +26,7 @@ def main():
     format_string = args.format_string
     pfsense_version = args.pfsense_version
 
-    parser = parser(pfsense_version)
+    parser = build_parser(pfsense_version)
 
     with open(data_file) as f:
         items = parser.parse(f.readlines())

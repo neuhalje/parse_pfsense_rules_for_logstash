@@ -13,9 +13,9 @@ class Parser22(object):
         return self.result
 
     def _parse_line(self, line):
-        #@0 scrub on vr2 all fragment reassemble
-        #@8 block drop out log inet6 all label "Default deny rule IPv6"
-        match = re.match('^@(\d+)\s+(\w+)\s+(.*?)(?:\s+label\s+"(.+)")?$', line)
+        #@0(0) scrub on vr2 all fragment reassemble
+        #@8(1000105592) block drop in log quick inet from any to 169.254.0.0/16 label "Block IPv4 link-local"
+        match = re.match('^@(\d+)[(]\d+[)]\s+(\w+)\s+(.*?)(?:\s+label\s+"(.+)")?$', line)
         if match:
             id = int(match.group(1))
             type = match.group(2)
